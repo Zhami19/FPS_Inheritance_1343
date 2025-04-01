@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Subtle_Gun_Shoot
+  m_Controller: {fileID: 9100000, guid: 745f626a2abdc9e4aa1163ffe2fd3224, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5b8df48db65ee2d48aaffba8e1707655, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5b8df48db65ee2d48aaffba8e1707655, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9a4546a7a2697ea46a12e02d8309b5a5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7804af23faf2541408aedf4aea354995, type: 2}

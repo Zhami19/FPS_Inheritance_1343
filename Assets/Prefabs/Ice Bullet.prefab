@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4532034810564469576}
   - component: {fileID: 8089564043016835769}
   m_Layer: 9
-  m_Name: Bullet
+  m_Name: Ice Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 487163690456666478}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1605455366532320750}
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487163690456666478}
-  m_Mesh: {fileID: -1559358989046325825, guid: 468729e92be09e6459ed13788900b50f, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &4806127758399156636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.753687, b: 0, a: 1}
+      key0: {r: 0, g: 1, b: 0.95151806, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 468729e92be09e6459ed13788900b50f, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 468729e92be09e6459ed13788900b50f, type: 3}
       propertyPath: m_Enabled
@@ -272,14 +272,14 @@ PrefabInstance:
     - target: {fileID: -5754084199372789682, guid: 468729e92be09e6459ed13788900b50f, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -1559358989046325825, guid: 468729e92be09e6459ed13788900b50f, type: 3}
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 919132149155446097, guid: 468729e92be09e6459ed13788900b50f, type: 3}
       propertyPath: m_Name
       value: foamBulletA
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 468729e92be09e6459ed13788900b50f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 468729e92be09e6459ed13788900b50f, type: 3}

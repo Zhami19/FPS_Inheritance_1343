@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 380490915}
   - component: {fileID: 380490914}
   m_Layer: 11
-  m_Name: Gun Pickup (2)
+  m_Name: Gun Pickup Automatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,7 +665,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380490913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.652, y: 0, z: -5.14}
+  m_LocalPosition: {x: 4.652, y: 0, z: -1.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 411709688}
   - component: {fileID: 411709690}
   m_Layer: 0
-  m_Name: Basic Blaster
+  m_Name: Icegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -777,7 +777,10 @@ MonoBehaviour:
   maxAmmo: 100
   timeBetweenShots: 0.1
   isAutomatic: 0
-  particleEffect: {fileID: 6255647114461748926, guid: 1d43884081eda12409b1b6c6557271bc, type: 3}
+  impactPE: {fileID: 6255647114461748926, guid: 94a5650e585bb0e4cb3134dbd6564716, type: 3}
+  explosionPE: {fileID: 6255647114461748926, guid: 1d43884081eda12409b1b6c6557271bc, type: 3}
+  floatingPE: {fileID: 6255647114461748926, guid: c97fe4986b4eb154f817801436cd6256, type: 3}
+  shotPE: {fileID: 6255647114461748926, guid: d52920169824a104f8af7a76bff13c09, type: 3}
   ice: {fileID: 5797428599058612662, guid: 6e2650f57567b524594bdbe213b96e05, type: 3}
 --- !u!4 &429202712 stripped
 Transform:
@@ -2242,7 +2245,7 @@ GameObject:
   - component: {fileID: 770809397}
   - component: {fileID: 770809396}
   m_Layer: 11
-  m_Name: Gun Pickup (3)
+  m_Name: Gun Pickup Icegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2333,7 +2336,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770809395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.86, y: 0, z: -5.14}
+  m_LocalPosition: {x: 4.52, y: 0, z: -5.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2596,7 +2599,7 @@ GameObject:
   - component: {fileID: 1071831163}
   - component: {fileID: 1071831165}
   m_Layer: 0
-  m_Name: Basic Blaster
+  m_Name: Automatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4326,7 +4329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a65754015ebd96644bfc13d4cca38de5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.13
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a65754015ebd96644bfc13d4cca38de5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6017,6 +6020,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5546eda9b5522a34696dce99ea6d8a3b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5546eda9b5522a34696dce99ea6d8a3b, type: 3}
       propertyPath: m_Name
       value: blasterN
@@ -6288,7 +6295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8589143665434785, guid: fa9c5921f7a67fe49822424e8604a768, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589143665434786, guid: fa9c5921f7a67fe49822424e8604a768, type: 3}
       propertyPath: gun
@@ -6419,7 +6426,7 @@ GameObject:
   - component: {fileID: 1935371215313241473}
   - component: {fileID: 1935371215313241480}
   m_Layer: 0
-  m_Name: Basic Blaster
+  m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6518,7 +6525,7 @@ GameObject:
   - component: {fileID: 4500609304474250458}
   - component: {fileID: 4500609304474250459}
   m_Layer: 11
-  m_Name: Gun Pickup (1)
+  m_Name: Gun Pickup Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6609,7 +6616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4500609304474250456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.652, y: 0, z: 0}
+  m_LocalPosition: {x: 4.652, y: 0, z: 2.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

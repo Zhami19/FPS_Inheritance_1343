@@ -56,12 +56,12 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Swapping"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""14f298f9-2286-4bcb-8e35-73a272892bb4"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Double"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [

@@ -132,7 +132,9 @@ public class FPSController : MonoBehaviour
         if (equippedGuns.Count == 0)
             return;
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        //if(Input.GetAxis("Mouse ScrollWheel") > 0)
+
+        if (GetScrollValue() > 0) 
         {
             gunIndex++;
             if (gunIndex > equippedGuns.Count - 1)
@@ -141,7 +143,8 @@ public class FPSController : MonoBehaviour
             EquipGun(equippedGuns[gunIndex]);
         }
 
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        //else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        else if (GetScrollValue() < 0)
         {
             gunIndex--;
             if (gunIndex < 0)
@@ -217,6 +220,11 @@ public class FPSController : MonoBehaviour
     }
 
     // Input methods
+
+    float GetScrollValue()
+    {
+        return playerInput.Player.Swapping.ReadValue<Vector2>().y;
+    }
 
     bool GetPressFire()
     {

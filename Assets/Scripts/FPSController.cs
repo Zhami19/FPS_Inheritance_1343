@@ -173,7 +173,7 @@ public class FPSController : MonoBehaviour
                 currentGun?.AttemptFire();
         }
 
-        // pressed the alt fire button (NO LONGER NEEDED - I just put you can euther use mouse 0 or mouse 1 (left/right click) when you GetPressFire)
+        // pressed the alt fire button (NO LONGER NEEDED - I just put you can either use mouse 0 or mouse 1 (left/right click) in my one Shooting action)
         /*if (GetPressAltFire())
         {
             currentGun?.AttemptAltFire();

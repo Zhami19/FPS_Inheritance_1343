@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FPSController : MonoBehaviour
 {
@@ -28,11 +29,32 @@ public class FPSController : MonoBehaviour
 
     // properties
     public GameObject Cam { get { return cam; } }
-    
+
+    // input
+    PlayerInputMap playerInput;
+
+    Vector2 m_MovementInput;
+    [SerializeField] float m_Speed = 5f;
+
 
     private void Awake()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        playerInput = new PlayerInputMap();
+        playerInput.Enable();
+
+        playerInput.Player.Jumping.performed += OnJump;
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Disable();
+
+        playerInput.Player.Jumping.performed -= OnJump;
     }
 
     // Start is called before the first frame update
@@ -51,7 +73,9 @@ public class FPSController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        m_MovementInput = playerInput.Player.Moving.ReadValue<Vector2>();
         Movement();
+
         Look();
         HandleSwitchGun();
         FireGun();
@@ -66,7 +90,7 @@ public class FPSController : MonoBehaviour
     {
         grounded = controller.isGrounded;
 
-        if(grounded && velocity.y < 0)
+        if (grounded && velocity.y < 0)
         {
             velocity.y = -1;// -0.5f;
         }
@@ -75,14 +99,18 @@ public class FPSController : MonoBehaviour
         Vector3 move = transform.right * movement.x + transform.forward * movement.y;
         controller.Move(move * movementSpeed * (GetSprint() ? 2 : 1) * Time.deltaTime);
 
-        if (Input.GetButtonDown("Jump") && grounded)
-        {
-            velocity.y += Mathf.Sqrt (jumpForce * -1 * gravity);
-        }
-
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    public void OnJump(InputAction.CallbackContext ctx)
+    {
+        grounded = controller.isGrounded;
+        if (grounded)
+        {
+            velocity.y += Mathf.Sqrt(jumpForce * -1 * gravity);
+        }
     }
 
     void Look()
@@ -130,23 +158,23 @@ public class FPSController : MonoBehaviour
             return;
 
         // pressed the fire button
-        if(GetPressFire())
+        if (GetPressFire())
         {
             currentGun?.AttemptFire();
         }
 
         // holding the fire button (for automatic)
-        else if(GetHoldFire())
+        else if (GetHoldFire())
         {
             if (currentGun.AttemptAutomaticFire())
                 currentGun?.AttemptFire();
         }
 
         // pressed the alt fire button
-        if (GetPressAltFire())
+        /*if (GetPressAltFire())
         {
             currentGun?.AttemptAltFire();
-        }
+        }*/
     }
 
     void EquipGun(Gun g)
@@ -192,12 +220,15 @@ public class FPSController : MonoBehaviour
 
     bool GetPressFire()
     {
-        return Input.GetButtonDown("Fire1");
+        //return Input.GetButtonDown("Fire1");
+        //return playerInput.Player.Shooting.IsPressed();
+        return playerInput.Player.Shooting.WasPressedThisFrame();
     }
 
     bool GetHoldFire()
     {
-        return Input.GetButton("Fire1");
+        //return Input.GetButton("Fire1");
+        return playerInput.Player.Shooting.IsPressed();
     }
 
     bool GetPressAltFire()
@@ -207,7 +238,8 @@ public class FPSController : MonoBehaviour
 
     Vector2 GetPlayerMovementVector()
     {
-        return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        return new Vector2(m_MovementInput.x, m_MovementInput.y);
     }
 
     Vector2 GetPlayerLook()

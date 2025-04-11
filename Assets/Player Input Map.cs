@@ -89,6 +89,17 @@ public partial class @PlayerInputMap : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""87a379aa-3195-477b-87d6-916241cdcb6c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""e2ff7233-1fcf-4367-aa6c-667024e28c36"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",

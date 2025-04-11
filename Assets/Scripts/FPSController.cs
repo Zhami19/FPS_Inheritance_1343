@@ -170,7 +170,7 @@ public class FPSController : MonoBehaviour
                 currentGun?.AttemptFire();
         }
 
-        // pressed the alt fire button
+        // pressed the alt fire button (NO LONGER NEEDED - I just put you can euther use mouse 0 or mouse 1 (left/right click) when you GetPressFire)
         /*if (GetPressAltFire())
         {
             currentGun?.AttemptAltFire();
@@ -221,7 +221,6 @@ public class FPSController : MonoBehaviour
     bool GetPressFire()
     {
         //return Input.GetButtonDown("Fire1");
-        //return playerInput.Player.Shooting.IsPressed();
         return playerInput.Player.Shooting.WasPressedThisFrame();
     }
 
@@ -231,10 +230,10 @@ public class FPSController : MonoBehaviour
         return playerInput.Player.Shooting.IsPressed();
     }
 
-    bool GetPressAltFire()
+    /*bool GetPressAltFire()
     {
         return Input.GetButtonDown("Fire2");
-    }
+    }*/
 
     Vector2 GetPlayerMovementVector()
     {

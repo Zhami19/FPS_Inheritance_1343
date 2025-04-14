@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class BadGuy : MonoBehaviour
 {
+    [SerializeField] Rigidbody rb;
+
     [SerializeField] NavMeshAgent agent;
 
     [SerializeField] Transform target;
@@ -15,7 +17,7 @@ public class BadGuy : MonoBehaviour
     float wanderRange;
     Vector3 startingLocation;
     float playerSightRange;
-    float playerAttackRange;
+    float playerAttackRange = 2;
     float currentStateElapsed;
     float recoveryTime;
 
@@ -69,39 +71,77 @@ public class BadGuy : MonoBehaviour
                 wander4.position = new Vector3(Random.Range(-7.5f, 18), -.27f, Random.Range(15, 48));
             }
         }
+
+        if (playerSightRange <= 10)
+        {
+            m_States = MyStates.PURSUE;
+        }
     }
 
     void UpdatePursue()
     {
-        /*agent.SetDestination(target.position);
+        agent.SetDestination(target.position);
 
-        if (playerSightRange >= 5f)
+        if (playerSightRange <= 5)
         {
-            *//*agent.SetDestination(wander1.position); //ORIGINAL TWO
-            distance1 = Vector3.Distance(transform.position, wander2.position);*//*
+            m_States = MyStates.ATTACK;
+        }
 
-           
-            agent.SetDestination(wander3.position);
-            distance3 = Vector3.Distance(transform.position, wander3.position);
-
+        if (playerSightRange > 10)
+        {
             m_States = MyStates.WANDER;
-        }*/
-
-        /*if (playerSightRange <= 5f)
-        {
-            Debug.Log("Bad Guy has attacked");
-            m_States = MyStates.;
-        }*/
-
+        }
     }
 
     void UpdateAttack()
-    {
-        Debug.Log("Enemy has attacked!");
+    {     
+        if (playerSightRange > 10)
+        {
+            if (gameObject.GetComponent<Rigidbody>() != null)
+            {
+                Destroy(gameObject.GetComponent<Rigidbody>());
+            }
+            m_States = MyStates.WANDER;
+        }
+        else if (playerSightRange > 5)
+        {
+            if (gameObject.GetComponent<Rigidbody>() != null)
+            {
+                Destroy(gameObject.GetComponent<Rigidbody>());
+            }
+            m_States = MyStates.PURSUE;
+        }
+        else if (playerSightRange <= 3)
+        {
+            gameObject.AddComponent<Rigidbody>();
+            Attack();
+        }
     }
 
     void UpdateRecovery()
     {
+        var time = 0f;
+        time += Time.deltaTime;
 
+        if (time > 5f)
+        {
+            m_States = MyStates.WANDER;
+        }
+    }
+
+    private void Attack()
+    {
+        GetComponent<Rigidbody>().AddForce(Vector3.back * 3, ForceMode.Impulse);
+        Debug.Log("Enemy has attacked!");
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("Player has taken damage!");
+            m_States = MyStates.RECOVERY;
+        }
     }
 }

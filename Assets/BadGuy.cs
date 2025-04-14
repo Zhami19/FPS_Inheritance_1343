@@ -131,13 +131,16 @@ public class BadGuy : MonoBehaviour
 
     private void Attack()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.back * 3, ForceMode.Impulse);
+        //Vector3 currTarget = new Vector3(target.position.x, target.position.y, target.position.z);
+        Vector3 direction = (target.position - transform.position).normalized;
+        GetComponent<Rigidbody>().AddForce(direction * 3, ForceMode.Impulse);
         Debug.Log("Enemy has attacked!");
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("triggered");
         if (other.tag == "Player")
         {
             Debug.Log("Player has taken damage!");
